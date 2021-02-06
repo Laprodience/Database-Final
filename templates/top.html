@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block title %}counterbet.com{% endblock %}
+{% block content %}
+<h1>Top Teams and Players</h1>
+<p></p>
+<form action="" method="post" name="top">
+    <h2>Top Players</h2>
+    <ol class="top">
+        {% for player in players10 %}
+        <li>
+            <b><a href="{{ url_for('player_page', player_nickname=player.nickname) }}">
+                   <strong>{{ player.nickname }}</strong>
+            </a></b>,
+            &emsp;
+            <b><highlight>Team: </highlight></b>{{ player.team }},
+            &emsp;
+            <b><highlight>Rating: </highlight></b>{{ player.rating }}
+        </li>
+            {% endfor %}
+    </ol>
+    <hr />
+    <hr />
+    <h2>Top Teams</h2>
+    <ol class="top">
+        {% for team in teams10 %}
+        <li>
+            <b><strong>{{ team.name }}</strong></b>:
+            &emsp;
+            <a href="{{ url_for('player_page', player_nickname=team.captain) }}"><highlight>{{ team.captain }}</highlight></a>&emsp;-
+            &emsp;
+            <a href="{{ url_for('player_page', player_nickname=team.sniper) }}"><highlight>{{ team.sniper }}</highlight></a>&emsp;-
+            &emsp;
+            <a href="{{ url_for('player_page', player_nickname=team.entry_fragger) }}"><highlight>{{ team.entry_fragger }}</highlight></a>&emsp;-
+            &emsp;
+            <a href="{{ url_for('player_page', player_nickname=team.support) }}"><highlight>{{ team.support }}</highlight></a>&emsp;-
+            &emsp;
+            <a href="{{ url_for('player_page', player_nickname=team.lurker) }}"><highlight>{{ team.lurker }}</highlight></a>
+            {% endfor %}
+        </li>
+    </ol>
+</form>
+{% endblock %}

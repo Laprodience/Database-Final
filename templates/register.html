@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>counterbet.com</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='stylesheet.css')}}">
+</head>
+<body style="background-color: #B8860B;">
+    <div>
+        <h1>Register</h1>
+        <div>
+            Are you a member? Click to <a href="{{ url_for('login_page') }}" class="active"><highlight>Login!</highlight></a>
+        </div>
+        <form action="{{ url_for('register_page') }}" method="post">
+            
+            <input class="box" type="text" name="nickname" placeholder="Nickname" id="Nickname" required>
+            
+            <input class="box" type="password" name="password" placeholder="Password" id="Password" required>
+            <div class="msg">{{ msg }}</div>
+            <input type="submit" value="Register">
+        </form>
+    </div>
+</body>
+</html>
