@@ -1,0 +1,51 @@
+1. First query
+CREATE DATABASE counterbet;
+
+2. Second query
+use counterbet;
+
+3. Third query, copy and paste all down below
+CREATE TABLE `bets` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user` varchar(30) NOT NULL,
+  `team` varchar(30) NOT NULL,
+  `matchid` int NOT NULL,
+  `amount` double NOT NULL,
+  `odd` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+CREATE TABLE `matches` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `team1` varchar(30) NOT NULL,
+  `team2` varchar(30) NOT NULL,
+  `team1_odd` float DEFAULT NULL,
+  `team2_odd` float DEFAULT NULL,
+  `date` varchar(30) NOT NULL,
+  `score` varchar(15) DEFAULT NULL,
+  `winner` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+CREATE TABLE `players` (
+  `nickname` varchar(30) NOT NULL,
+  `rating` float NOT NULL,
+  `team` varchar(30) NOT NULL,
+  `settings` varchar(1000) NOT NULL,
+  PRIMARY KEY (`nickname`)
+) ENGINE=InnoDB;
+CREATE TABLE `teams` (
+  `name` varchar(50) NOT NULL,
+  `teamrank` int NOT NULL,
+  `captain` varchar(30) NOT NULL,
+  `sniper` varchar(30) NOT NULL,
+  `entry_fragger` varchar(30) NOT NULL,
+  `support` varchar(30) NOT NULL,
+  `lurker` varchar(30) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB;
+CREATE TABLE `users` (
+  `nickname` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `balance` double NOT NULL,
+  `registerdate` varchar(12) NOT NULL,
+  PRIMARY KEY (`nickname`)
+) ENGINE=InnoDB;
